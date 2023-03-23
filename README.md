@@ -1,46 +1,60 @@
-# Astro Starter Kit: Minimal
+# IMC indexer
 
-```
-npm create astro@latest -- --template minimal
-```
+This is a simple indexer for almost any kind of file. It is based
+on [Meilisearch](https://docs.meilisearch.com/learn/getting_started/quick_start.html#add-documents) and
+uses [AstroJS](https://astro.build/) for the frontend.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
+## Installation
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Prerequisites
 
-## 🚀 Project Structure
+- Clone the repository
+- Make sure you have docker or podman installed
+- Follow
+  the [installation instructions](https://docs.meilisearch.com/learn/getting_started/installation.html#local-installation)
+  for Meilisearch
+- Make sure you have python3 installed (tested with 3.11)
 
-Inside of your Astro project, you'll see the following folders and files:
+### Meilisearch
 
-```
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Launch Meilisearch
+- Create a new index using the `extract.py` script (see below)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Extracting data
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Download your dataset from [find by yourself](https://lemmy.ml/). Be sure that the html file is in the same directory
+  as the `extract.py` script and it's named `index.html`
+- Run `python3 extract.py`
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Frontend
 
-## 🧞 Commands
+- Run `docker build -t imc-indexer .` or `podman build -t imc-indexer .`
+- Run `docker run -p 3000:3000 imc-indexer` or `podman run -p 3000:3000 imc-indexer`
+- Open `http://localhost:3000` in your browser
 
-All commands are run from the root of the project, from a terminal:
+## Usage
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+- Search for a term in the search bar
+- Click on a result to open it in a new tab
 
-## 👀 Want to learn more?
+## Contributing
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Acknowledgements
+
+- [Meilisearch](https://github.com/meilisearch/meilisearch)
+- [AstroJS](https://github.com/withastro/astro)
+- [Lemmy](https://lemmy.ml/)
+
+## Disclaimer
+
+This is not an official project of any kind. It is just a small project I made for myself and decided to share it with the world.
+I am not responsible for any damage caused by this software. Use at your own risk.
+It's just a tool to make it easier to search for stuff from a dataset. You can use it for whatever you want, but I won't support you if you use it for illegal purposes.
+
+It is not affiliated with any of the projects mentioned above.
