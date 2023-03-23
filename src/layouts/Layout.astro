@@ -1,0 +1,36 @@
+---
+// Style imports
+import "@style/tailwind.css"
+
+// Import fonts
+import "@fontsource/syne"
+import "@fontsource/nunito"
+---
+
+<html lang="en">
+  <head>
+    <!-- SEO. -->
+    <title>IMC indexer</title>
+    <!-- Google Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+
+    <!-- Global meta tags. -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="flex min-h-screen w-full flex-col overflow-x-hidden">
+    <!-- Header -->
+    <main class="flex h-[100%] w-full flex-1 flex-col">
+      <slot />
+    </main>
+  </body>
+</html>
